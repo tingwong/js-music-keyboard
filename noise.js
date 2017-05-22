@@ -7,14 +7,16 @@ $(document).ready( function() {
   };
 
   $(".instrument").on("click", "button", function(event){
-    var noteClass = $(this).attr("class");
-    noteClass = noteClass.substr(-1);
+    var noteClass = $(this).attr("class").substr(-1);
     playByNote(noteClass);
   });
 
-  $(".instrument").on("click", "button", function(event){
-    var noteClass = $(this).attr("class");
-    noteClass = noteClass.substr(-1);
+  $("body").on("keydown", function(event){
+    // If we wanted to map by keypress
+    // var noteClass = event.key.toLowerCase();
+    // If we wanted to map by keyboard
+    var usedKeys = {"d": "c", "f": "d", "g": "e", "h": "f", "j":"g", "k":"a", "l":"b"};
+    var noteClass = usedKeys[event.key.toLowerCase()];
     playByNote(noteClass);
   });
 });
